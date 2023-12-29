@@ -1,0 +1,40 @@
+version: "3.8"
+services: 
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    networks:
+      - react-net
+    volumes:
+      - react:/data/db
+
+  frontend:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - react-net
+
+  api-server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    networks:
+      - react-net
+      
+volumes: 
+  react:
+    driver: local
+
+networks:
+  react-net:
+    driver: bridge
+

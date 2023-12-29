@@ -2,7 +2,7 @@ const Movie = require('../models/movie-model')
 
 createMovie = (req, res) => {
     const body = req.body
-
+    
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -10,12 +10,13 @@ createMovie = (req, res) => {
         })
     }
 
-    const movie = new Movie(body)
+   
 
+    const movie = new Movie(body)
+    
     if (!movie) {
         return res.status(400).json({ success: false, error: err })
     }
-
     movie
         .save()
         .then(() => {
@@ -28,7 +29,7 @@ createMovie = (req, res) => {
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Movie not created!',
+                message: 'Movie not created!' + error,
             })
         })
 }
