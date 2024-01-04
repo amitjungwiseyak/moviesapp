@@ -6,14 +6,14 @@ pipeline {
 		sh '''
 		echo "first stage"
   		'''
+		}
 	     }
 	  stage('TEST'){
 		steps {
 		sh ''' 
-		echo 'this is test stage'
+		echo "this is test stage"
   		'''
-	    }
-
+	   	 }
+	     }
 	}
-}
 }
