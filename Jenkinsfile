@@ -2,7 +2,7 @@ ipipeline {
 	agent any	
 	stages {
 	   stage('BUILD'){
-		steps{
+		steps {
 		sh '''
 		echo "first stage"
   		'''
