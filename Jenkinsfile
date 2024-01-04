@@ -1,18 +1,13 @@
-pipeline {
+ipipeline {
 	agent any	
 	stages {
-	   stage("first stage"){
+	   stage('BUILD'){
 		steps{
-		sh '''
 		echo "first stage"
-		'''
 	     }
-	  stage('Build'){
-		steps{
-		sh '''
-		echo 'this is build stage'
-		'''
-		}
+	  stage('TEST'){
+		steps {
+		echo 'this is test stage'
 	    }
 
 	}
